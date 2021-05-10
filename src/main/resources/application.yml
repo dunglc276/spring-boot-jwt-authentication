@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: JWT-Demo
+  datasource:
+    url: jdbc:postgresql://${SPRING_DATASOURCE_ADDRESS}:${SPRING_DATASOURCE_PORT}/lcd
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        ddl-auto: update
+        format-sql: true
+        default_schema: auth
+  flyway:
+    enabled: true
+    schemas: auth
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: false
+        
+server:
+  port: ${SERVER_PORT:8080}
+  
+jwt:
+  jwtSecret: lcd276
+  jwtExpirationMs: 86400000
